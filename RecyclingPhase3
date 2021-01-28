@@ -1,8 +1,8 @@
-Created on March 15, 2020
+# Created on March 15, 2020
 # Kaylee Cabral
-Project1 Phase 3, calculate the Mean, median, standard deviation, variance, range, skewness, correlation (positive or negative),
+# Project1 Phase 3, calculate the Mean, median, standard deviation, variance, range, skewness, correlation (positive or negative),
 quartiles and outliers from an excel sheet
-'''
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib import colors
