@@ -1,0 +1,719 @@
+Created on March 15, 2020
+# Kaylee Cabral
+Project1 Phase 3, calculate the Mean, median, standard deviation, variance, range, skewness, correlation (positive or negative),
+quartiles and outliers from an excel sheet
+'''
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib import colors
+from matplotlib.ticker import PercentFormatter
+import numpy as np
+import pandas as pd
+
+
+file = pd.read_excel(r'C:\Users\kayleecabral\Desktop\Recycling Survey V3.xlsx')
+
+columnB = pd.DataFrame(file, columns=['Q1'])
+columnC = pd.DataFrame(file, columns=['Q2'])
+columnD = pd.DataFrame(file, columns=['Q3'])
+columnE = pd.DataFrame(file, columns=['Q4'])
+columnF = pd.DataFrame(file, columns=['Q5'])
+columnG = pd.DataFrame(file, columns=['Q6'])
+columnH = pd.DataFrame(file, columns=['Q7'])
+columnI = pd.DataFrame(file, columns=['Q8'])
+columnJ = pd.DataFrame(file, columns=['Q9'])
+columnK = pd.DataFrame(file, columns=['Q10'])
+columnL = pd.DataFrame(file, columns=['Q11'])
+columnM = pd.DataFrame(file, columns=['Q12'])
+columnN = pd.DataFrame(file, columns=['Q13'])
+columnO = pd.DataFrame(file, columns=['Q14'])
+columnP = pd.DataFrame(file, columns=['Q15'])
+columnQ = pd.DataFrame(file, columns=['Q16'])
+columnR = pd.DataFrame(file, columns=['Q17'])
+
+
+meanB = file['Q1'].mean()
+stdB = file['Q1'].std()
+medianB = file['Q1'].median()
+varianceB = file['Q1'].var()
+rangeB = columnB.max() - columnB.min()
+skewB = file['Q1'].skew()
+
+print("Statistics of column B")
+print(columnB.describe())
+print("Median = ", medianB)
+print("Variance = ", varianceB)
+print("range = ", rangeB)
+print("skewness = ", skewB)
+print("standard deviation = ", stdB)
+# outlier and zscore of column
+for y in file['Q1']:
+   zscore = (y - meanB) / stdB
+   if abs(zscore)>3:
+       print("column B is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q1'])
+plt.xlabel('Role in school')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q1'], columns = "count")
+my_tabB = pd.crosstab(index = file['Q1'], columns = "count")
+print(my_tabB)
+#diagram
+
+print("------------------------------------------")
+
+meanC = file['Q2'].mean()
+stdC = file['Q2'].std()
+medianC = columnC.median()
+varianceC = columnC.var()
+rangeC = columnC.max() - columnC.min()
+skewC = columnC.skew()
+
+print("Statistics of column C")
+print(columnC.describe())
+print("Median ", medianC)
+print("Variance ", varianceC)
+print("range ", rangeC)
+print("skewness ", skewC)
+# outlier and zscore of column
+for x in file['Q2']:
+   zscore = (x - meanC) / stdC
+   if abs(zscore) > 3:
+       print("column C is an outlier, in this value : ", x, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q2'])
+plt.xlabel('where do you live?')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q2'], columns = "count")
+my_tabC = pd.crosstab(index = file['Q2'], columns = "count")
+print(my_tabC)
+
+plt.boxplot(file['Q2'],showmeans = True)
+plt.show()
+
+plt.scatter(file['Q2'], file['Q7'])
+plt.show()
+plt.scatter(file['Q2'], file['Q8'])
+plt.show()
+plt.scatter(file['Q2'], file['Q9'])
+plt.show()
+plt.scatter(file['Q2'], file['Q14'])
+plt.show()
+
+print("------------------------------------------")
+
+meanD = file['Q3'].mean()
+stdD = file['Q3'].std()
+medianD = columnD.median()
+varianceD = columnD.var()
+rangeD = columnD.max() - columnD.min()
+skewD = columnD.skew()
+
+print("Statistics of column D")
+print(columnD.describe())
+print("Median ", medianD)
+print("Variance ", varianceD)
+print("range ", rangeD)
+print("skewness ", skewD)
+# outlier and zscore of column
+for x in file['Q3']:
+   zscore = (x - meanD) / stdD
+   if abs(zscore) > 3:
+       print("column D is an outlier, in this value : ", x, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q3'])
+plt.xlabel('Gender')
+plt.ylabel('Frequency Distribution')
+#columnD.hist()
+plt.show()
+pd.crosstab(index = file['Q3'], columns = "count")
+my_tabD = pd.crosstab(index = file['Q3'], columns = "count")
+print(my_tabD)
+
+plt.boxplot(file['Q3'],showmeans = True)
+plt.show()
+
+plt.scatter(file['Q4'], file['Q7'])
+plt.show()
+
+plt.scatter(file['Q4'], file['Q9'])
+plt.show()
+
+plt.scatter(file['Q4'], file['Q11'])
+plt.show()
+
+print("------------------------------------------")
+
+
+meanE = file['Q4'].mean()
+stdE = file['Q4'].std()
+medianE = columnE.median()
+varianceE = columnE.var()
+rangeE = columnE.max() - columnE.min()
+skewE = columnE.skew()
+
+print("Statistics of column E")
+print(columnE.describe())
+print("Median ", medianE)
+print("Variance ", varianceE)
+print("range ", rangeE)
+print("skewness ", skewE)
+# outlier and zscore of column
+for a in file['Q4']:
+   zscore = (a - meanE) / stdE
+   if abs(zscore) > 3:
+       print("column E is an outlier, in this value : ", a, "zscore = ", zscore)
+sns.set()
+plt.hist(file['Q4'])
+plt.xlabel('Q4')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Seasons'], columns = "count")
+my_tabE = pd.crosstab(index = file['Q4'], columns = "count")
+print(my_tabE)
+
+plt.boxplot(file['Q4'], showmeans = True)
+plt.show()
+
+#season = ['winter', 'spring', 'summer', 'fall']
+#xpos = np.arange(len(season))
+#plt.xticks(xpos, season)
+#plt.bar(file['Seasons'])
+#plt.show()
+
+plt.scatter(file['Q4'], file['Day of the week'])
+plt.show()
+
+plt.boxplot(file['Q3'],showmeans = True)
+plt.show()
+
+plt.scatter(file['Q4'], file['Q7'])
+plt.show()
+plt.scatter(file['Q4'], file['Q8'])
+plt.show()
+plt.scatter(file['Q4'], file['Q9'])
+plt.show()
+plt.scatter(file['Q4'], file['Q14'])
+plt.show()
+print("------------------------------------------")
+
+meanF = file['Q5'].mean()
+stdF = file['Q5'].std()
+medianF = file['Q5'].median()
+varianceF = file['Q5'].var()
+rangeF = columnF.max() - columnF.min()
+skewF = file['Q5'].skew()
+
+print("Statistics of column F")
+print(columnF.describe())
+print("Median = ", medianF)
+print("Variance = ", varianceF)
+print("range = ", rangeF)
+print("skewness = ", skewF)
+print("standard deviation = ", stdF)
+# outlier and zscore of column
+for y in file['Q5']:
+   zscore = (y - meanF) / stdF
+   if abs(zscore)>3:
+       print("column F is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q5'])
+plt.xlabel('Q5')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q5'], columns = "count")
+my_tabF = pd.crosstab(index = file['Q5'], columns = "count")
+print(my_tabF)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q5'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q5'], file['Q7'])
+plt.show()
+plt.scatter(file['Q5'], file['Q8'])
+plt.show()
+plt.scatter(file['Q5'], file['Q9'])
+plt.show()
+plt.scatter(file['Q5'], file['Q14'])
+plt.show()
+
+print("------------------------------------------")
+
+meanG = file['Q6'].mean()
+stdG = file['Q6'].std()
+medianG = columnG.median()
+varianceG = columnG.var()
+rangeG = columnG.max() - columnG.min()
+skewG = columnG.skew()
+
+print("Statistics of column G")
+print(columnG.describe())
+print("Median ", medianG)
+print("Variance ", varianceG)
+print("range ", rangeG)
+print("skewness ", skewG)
+# outlier and zscore of column
+for a in file['Q6']:
+   zscore = (a - meanG) / stdG
+   if abs(zscore) > 3:
+       print("column G is an outlier, in this value :", a, ", zscore = ", zscore)
+       break
+sns.set()
+plt.hist(file['Q6'])
+plt.xlabel('Q6')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q6'], columns = "count")
+my_tabG = pd.crosstab(index = file['Q6'], columns = "count")
+print(my_tabG)
+
+plt.boxplot(file['Q6'], showmeans = True)
+plt.show()
+print("------------------------------------------")
+
+meanH = file['Q7'].mean()
+stdH = file['Q7'].std()
+medianH = file['Q7'].median()
+varianceH = file['Q7'].var()
+rangeH = columnH.max() - columnH.min()
+skewH = file['Q7'].skew()
+
+print("Statistics of column H")
+print(columnH.describe())
+print("Median = ", medianH)
+print("Variance = ", varianceH)
+print("range = ", rangeH)
+print("skewness = ", skewH)
+print("standard deviation = ", stdH)
+# outlier and zscore of column
+for y in file['Q7']:
+   zscore = (y - meanH) / stdH
+   if abs(zscore)>3:
+       print("column H is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q7'])
+plt.xlabel('Q7')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q7'], columns = "count")
+my_tabH = pd.crosstab(index = file['Q7'], columns = "count")
+print(my_tabH)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q7'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q7'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+meanI = file['Q8'].mean()
+stdI = file['Q8'].std()
+medianI = file['Q8'].median()
+varianceI = file['Q8'].var()
+rangeI = columnI.max() - columnI.min()
+skewI = file['Q8'].skew()
+
+print("Statistics of column I")
+print(columnI.describe())
+print("Median = ", medianI)
+print("Variance = ", varianceI)
+print("range = ", rangeI)
+print("skewness = ", skewI)
+print("standard deviation = ", stdI)
+# outlier and zscore of column
+for y in file['Q8']:
+   zscore = (y - meanI) / stdI
+   if abs(zscore)>3:
+       print("column I is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q8'])
+plt.xlabel('Q8')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q8'], columns = "count")
+my_tabI = pd.crosstab(index = file['Q8'], columns = "count")
+print(my_tabI)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q8'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q8'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+
+meanJ = file['Q9'].mean()
+stdJ = file['Q9'].std()
+medianJ = file['Q9'].median()
+varianceJ = file['Q9'].var()
+rangeJ = columnJ.max() - columnJ.min()
+skewJ = file['Q9'].skew()
+
+print("Statistics of column J")
+print(columnJ.describe())
+print("Median = ", medianJ)
+print("Variance = ", varianceJ)
+print("range = ", rangeJ)
+print("skewness = ", skewJ)
+print("standard deviation = ", stdJ)
+# outlier and zscore of column
+for y in file['Q9']:
+   zscore = (y - meanJ) / stdJ
+   if abs(zscore)>3:
+       print("column J is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q9'])
+plt.xlabel('Q9')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q9'], columns = "count")
+my_tabJ = pd.crosstab(index = file['Q9'], columns = "count")
+print(my_tabJ)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q9'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q9'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+meanK = file['Q10'].mean()
+stdK = file['Q10'].std()
+medianK = file['Q10'].median()
+varianceK = file['Q10'].var()
+rangeK = columnK.max() - columnK.min()
+skewK = file['Q10'].skew()
+
+print("Statistics of column K")
+print(columnK.describe())
+print("Median = ", medianK)
+print("Variance = ", varianceK)
+print("range = ", rangeK)
+print("skewness = ", skewK)
+print("standard deviation = ", stdK)
+# outlier and zscore of column
+for y in file['Q10']:
+   zscore = (y - meanK) / stdK
+   if abs(zscore)>3:
+       print("column K is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q10'])
+plt.xlabel('Q10')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q10'], columns = "count")
+my_tabK = pd.crosstab(index = file['Q10'], columns = "count")
+print(my_tabK)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q10'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q10'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+meanL = file['Q11'].mean()
+stdL = file['Q11'].std()
+medianL = file['Q11'].median()
+varianceL = file['Q11'].var()
+rangeL = columnL.max() - columnL.min()
+skewL = file['Q11'].skew()
+
+print("Statistics of column L")
+print(columnL.describe())
+print("Median = ", medianL)
+print("Variance = ", varianceL)
+print("range = ", rangeL)
+print("skewness = ", skewL)
+print("standard deviation = ", stdL)
+# outlier and zscore of column
+for y in file['Q11']:
+   zscore = (y - meanL) / stdL
+   if abs(zscore)>3:
+       print("column L is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q11'])
+plt.xlabel('Q11')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q11'], columns = "count")
+my_tabL = pd.crosstab(index = file['Q11'], columns = "count")
+print(my_tabL)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q11'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q11'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+meanM = file['Q12'].mean()
+stdM = file['Q12'].std()
+medianM = file['Q12'].median()
+varianceM = file['Q12'].var()
+rangeM = columnM.max() - columnM.min()
+skewM = file['Q12'].skew()
+
+print("Statistics of column M")
+print(columnM.describe())
+print("Median = ", medianM)
+print("Variance = ", varianceM)
+print("range = ", rangeM)
+print("skewness = ", skewM)
+print("standard deviation = ", stdM)
+# outlier and zscore of column
+for y in file['Q12']:
+   zscore = (y - meanM) / stdM
+   if abs(zscore)>3:
+       print("column M is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q12'])
+plt.xlabel('Q12')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q12'], columns = "count")
+my_tabM = pd.crosstab(index = file['Q12'], columns = "count")
+print(my_tabM)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q12'], showmeans = True)
+plt.show()
+
+
+print("------------------------------------------")
+
+meanN = file['Q13'].mean()
+stdN = file['Q13'].std()
+medianN = file['Q13'].median()
+varianceN = file['Q13'].var()
+rangeN = columnN.max() - columnN.min()
+skewN = file['Q13'].skew()
+
+print("Statistics of column N")
+print(columnN.describe())
+print("Median = ", medianN)
+print("Variance = ", varianceN)
+print("range = ", rangeN)
+print("skewness = ", skewN)
+print("standard deviation = ", stdN)
+# outlier and zscore of column
+for y in file['Q13']:
+   zscore = (y - meanN) / stdN
+   if abs(zscore)>3:
+       print("column N is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q13'])
+plt.xlabel('Q13')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q13'], columns = "count")
+my_tabN = pd.crosstab(index = file['Q13'], columns = "count")
+print(my_tabN)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q13'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q13'], file['Q3'])
+plt.show()
+
+print("------------------------------------------")
+
+meanO = file['Q14'].mean()
+stdO = file['Q14'].std()
+medianO = columnO.median()
+varianceO = columnO.var()
+rangeO = columnO.max() - columnO.min()
+skewO = columnO.skew()
+
+print("Statistics of column O")
+print(columnO.describe())
+print("Median ", medianO)
+print("Variance ", varianceO)
+print("range ", rangeO)
+print("skewness ", skewO)
+# outlier and zscore of column
+for b in file['Q14']:
+   zscore = (b - meanO) / stdO
+   if abs(zscore) > 3:
+       print("column O is an outlier, in this value :", b, ", zscore = ", zscore)
+#columnC.hist()
+sns.set()
+plt.hist(file['Q14'])
+plt.xlabel('Q14')
+plt.ylabel('Frequency Distribution')
+
+plt.show()
+pd.crosstab(index = file['Q14'], columns = "count")
+my_tabO = pd.crosstab(index = file['Q14'], columns = "count")
+print(my_tabO)
+
+plt.boxplot(file['Q14'], showmeans = True)
+plt.show()
+
+plt.scatter(file['Q14'], file['Social drinker'])
+plt.show()
+
+print("------------------------------------------")
+
+meanP = file['Q15'].mean()
+stdP = file['Q15'].std()
+medianP = file['Q15'].median()
+varianceP = file['Q15'].var()
+rangeP = columnP.max() - columnP.min()
+skewP = file['Q15'].skew()
+
+print("Statistics of column P")
+print(columnP.describe())
+print("Median = ", medianP)
+print("Variance = ", varianceP)
+print("range = ", rangeP)
+print("skewness = ", skewP)
+print("standard deviation = ", stdP)
+# outlier and zscore of column
+for y in file['Q15']:
+   zscore = (y - meanP) / stdP
+   if abs(zscore)>3:
+       print("column P is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q15'])
+plt.xlabel('Q15')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q15'], columns = "count")
+my_tabP = pd.crosstab(index = file['Q15'], columns = "count")
+print(my_tabP)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q15'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q15'], file['Age'])
+plt.show()
+print("------------------------------------------")
+
+meanQ = file['Q16'].mean()
+stdQ = file['Q16'].std()
+medianQ = file['Q16'].median()
+varianceQ = file['Q16'].var()
+rangeQ = columnQ.max() - columnQ.min()
+skewQ = file['Q16'].skew()
+
+print("Statistics of column Q")
+print(columnQ.describe())
+print("Median = ", medianQ)
+print("Variance = ", varianceQ)
+print("range = ", rangeQ)
+print("skewness = ", skewQ)
+print("standard deviation = ", stdQ)
+# outlier and zscore of column
+for y in file['Q16']:
+   zscore = (y - meanQ) / stdQ
+   if abs(zscore)>3:
+       print("column Q is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q16'])
+plt.xlabel('Q16')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q16'], columns = "count")
+my_tabQ = pd.crosstab(index = file['Q16'], columns = "count")
+print(my_tabQ)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q16'], showmeans = True)
+plt.show()
+
+
+plt.scatter(file['Q16'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
+meanR = file['Q17'].mean()
+stdR = file['Q17'].std()
+medianR = file['Q17'].median()
+varianceR = file['Q17'].var()
+rangeR = columnR.max() - columnR.min()
+skewR = file['Q17'].skew()
+
+print("Statistics of column R")
+print(columnR.describe())
+print("Median = ", medianR)
+print("Variance = ", varianceR)
+print("range = ", rangeR)
+print("skewness = ", skewR)
+print("standard deviation = ", stdR)
+# outlier and zscore of column
+for y in file['Q17']:
+   zscore = (y - meanR) / stdR
+   if abs(zscore)>3:
+       print("column R is an outlier, in this value : ", y, "zscore = ", zscore)
+
+sns.set()
+plt.hist(file['Q17'])
+plt.xlabel('Q17')
+plt.ylabel('Frequency Distribution')
+#columnC.hist()
+plt.show()
+pd.crosstab(index = file['Q17'], columns = "count")
+my_tabR = pd.crosstab(index = file['Q17'], columns = "count")
+print(my_tabR)
+#diagram
+#scater plot, box plot
+plt.boxplot(file['Q17'], showmeans = True)
+plt.show()
+
+plt.scatter(file['Q17'], file['Age'])
+plt.show()
+
+print("------------------------------------------")
+
